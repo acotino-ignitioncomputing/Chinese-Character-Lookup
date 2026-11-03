@@ -1,10 +1,10 @@
 # This file implements a simple CLI tool for adding one or several chinese characters to
 # 'radicals.txt' and checking for duplicates.
 
-RADICAL_FILE = 'radicals.txt'
+from constants import RADICAL_FILE
 
 if __name__ == '__main__':
-    with open(RADICAL_FILE,'r') as file:
+    with RADICAL_FILE.open('r') as file:
         radical_list = [char.strip('\n') for char in file.readlines()]
 
     print(f"Total {len(radical_list)} radicals.")
@@ -26,12 +26,12 @@ if __name__ == '__main__':
 
     # Report found duplicates
     if duplicate_list:
-        print(f"Following provided characters appear in {RADICAL_FILE}.")
+        print(f"Following provided characters appear in {RADICAL_FILE.name}.")
         for duplicate in duplicate_list:
             print('\t' + duplicate)
 
     if character_list:
-        print(f"Append remaining characters to file '{RADICAL_FILE}'?? y / n")
+        print(f"Append remaining characters to file '{RADICAL_FILE.name}'?? y / n")
         choice = input("Input: ")
     else:
         # Terminate if no characters are left
@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     # Add remaining characters to file
     if choice == 'y':
-        with open(RADICAL_FILE, 'a') as file:
+        with RADICAL_FILE.open('a') as file:
             for character in character_list:
                 file.write('\n' + character)
         print(f" {len(character_list)} character(s) added.")
