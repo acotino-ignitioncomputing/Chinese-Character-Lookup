@@ -9,7 +9,7 @@ if __name__ == '__main__':
 
     print(f"Total {len(radical_list)} radicals.")
     print("Add radicals by entering one or several characters, separated by a single space:")
-    character_list = input("Input: ").split(' ')
+    character_list = [char for char in input("Input: ").split(' ') if char != '']
 
     duplicate_list = []
 
@@ -29,9 +29,9 @@ if __name__ == '__main__':
         print(f"Following provided characters appear in {RADICAL_FILE.name}.")
         for duplicate in duplicate_list:
             print('\t' + duplicate)
-
+    
     if character_list:
-        print(f"Append remaining characters to file '{RADICAL_FILE.name}'?? y / n")
+        print(f"Append remaining {len(character_list)} character(s) to file '{RADICAL_FILE.name}'?? y / n")
         choice = input("Input: ")
     else:
         # Terminate if no characters are left
@@ -41,7 +41,7 @@ if __name__ == '__main__':
     if choice == 'y':
         with RADICAL_FILE.open('a') as file:
             for character in character_list:
-                file.write('\n' + character)
+                file.write(character+'\n')
         print(f" {len(character_list)} character(s) added.")
     else:
         print("Done")
