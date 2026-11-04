@@ -4,15 +4,25 @@ from constants import CHARACTER_REGISTRY, RADICAL_FILE
 
 EXIT_CHAR = 'q'
 FLUSH_CHAR = 'f'
+REMOVE_CHAR = 'r'
 
-def append_registry(character: str , character_position: int):
+def append_registry(character: str , radicals_of_character, radical_list):
     # Load dict
     with CHARACTER_REGISTRY.open('rb') as file:
         char_registry_dict = pickle.load(file)
-
+    
+    # Compute character_position based on provided list of radicals
+    character_position = 0
+    for radical in radicals_of_character:
+        exponent = radical_list.index(radical)
+        character_position += 2**exponent
+    
     # Append dict
     if character_position in char_registry_dict.keys():
-        char_registry_dict[character_position].append(character)
+        if character not in char_registry_dict[character_position]:
+            char_registry_dict[character_position].append(character)
+        else:
+            print(f"Character {character} already registered")
     else:
         char_registry_dict[character_position] = [character]
 
@@ -27,6 +37,7 @@ if __name__ == '__main__':
 
     print("Add character to character_registry by first providing the character and then its radicals.")
     print(f"Quit by providing '{EXIT_CHAR}' or empty input.")
+    print(f"Remove last radical by typing '{REMOVE_CHAR}'.")
     print(f"Register the character by typing '{FLUSH_CHAR}'.")
 
     character = input("Character: ")
@@ -40,11 +51,11 @@ if __name__ == '__main__':
         radical = input(character + ' '.join(radicals_of_character) + ' : ')
 
         if radical == FLUSH_CHAR:
-            append_registry(character, character_position)
+            append_registry(character, radicals_of_character, radical_list)
             radical = EXIT_CHAR
+        elif radical == REMOVE_CHAR:
+            radicals_of_character.pop(-1)
         elif radical in radical_list:
-            exponent = radical_list.index(radical)
-            character_position += 2**exponent
             radicals_of_character.append(radical)
         elif radical != EXIT_CHAR and radical != '':
             print(f"{radical} not in file '{RADICAL_FILE.name}'.")
