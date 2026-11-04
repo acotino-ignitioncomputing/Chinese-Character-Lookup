@@ -1,2 +1,4 @@
 # folder from PyCharm IDE
 .idea/*
+
+__pycache__/*
