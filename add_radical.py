@@ -31,7 +31,7 @@ if __name__ == '__main__':
             print('\t' + duplicate)
     
     if character_list:
-        print(f"Append remaining {len(character_list)} character(s) to file '{RADICAL_FILE.name}'?? y / n")
+        print(f"Append (remaining) {len(character_list)} character(s) to file '{RADICAL_FILE.name}'?? y / n")
         choice = input("Input: ")
     else:
         # Terminate if no characters are left
