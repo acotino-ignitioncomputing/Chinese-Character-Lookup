@@ -18,13 +18,13 @@ def _position_contained(x: int, y: int) -> bool:
     # This implies that the radicals associated with x are present
     # in the characters at key y of the CHARACTER_REGISTRY.
     
-    # Note: if x and y have a coinciding 1-bit, then (y-x)
-    # has 1 less 1-bits than y. If x has a 1-bit at a position
+    # Note: if x is a power of 2 and has a coinciding 1-bit with y, then
+    # (y-x) has 1 less 1-bit than y. If x has a 1-bit at a position
     # where y has a 0-bit, then the left-part sequence 10...0
     # is replaced by 01...1, such that (y-x) has equal or more
-    # 1-bits then y.
-    # Conclusion: x contained in y iff 1-bits in (y-x) equal
-    # (1-bits in y) - (1-bits in x).
+    # 1-bits than y.
+    # Conclusion: x is contained in y iff number of 1-bits in (y-x) equal
+    # (number of 1-bits in y) - (number of 1-bits in x).
     
     if x > y:
         return False
