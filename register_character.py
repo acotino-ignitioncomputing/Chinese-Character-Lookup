@@ -45,14 +45,15 @@ if __name__ == '__main__':
     print("Now, providing radicals ...")
     radicals_of_character = []
     radical = ' '
-    character_position = 0
 
     while radical != EXIT_CHAR and radical != '':
         radical = input(character + ' '.join(radicals_of_character) + ' : ')
 
         if radical == FLUSH_CHAR:
             append_registry(character, radicals_of_character, radical_list)
-            radical = EXIT_CHAR
+            print(f"Character {character} added to the character_registry. Add another...")
+            radicals_of_character = []
+            character = input("Character: ")
         elif radical == REMOVE_CHAR:
             radicals_of_character.pop(-1)
         elif radical in radical_list:
