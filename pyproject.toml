@@ -1,0 +1,7 @@
+[project]
+name = "Chinese-Character-lookup"
+description = "Python script for looking up Chinese characters via their radicals."
+authors = [
+    {name= "acotino"}
+]
+requires-python = ">=3.10"
