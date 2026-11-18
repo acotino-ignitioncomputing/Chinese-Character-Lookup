@@ -16,7 +16,6 @@ Remove last radical by typing 'r'.
 Now, providing radicals ...
 Radicals  : 由
 Possible hits: 油
-Radicals 由 : 
 ```
 
 ## Background
@@ -28,7 +27,7 @@ Each Chinese character will be associated with the sum of its radicals,
 counting each power of 2 only once. 
 
 For example, let the radicals `木` and `广` be associated with
-the integers 1 and 3 respectively. The character `麻` will be associated with `9 = 2^1 + 2^3`.
+the integers 1 and 3 respectively. The character `麻` will be associated with `10 = 2^1 + 2^3`.
 
 ## Character storage
 
@@ -41,8 +40,7 @@ lists of characters. Its type hint is `dict[int, list[str]]`.
 The library `Pickle` is used for loading and storing
 this dictionary.
 
-The CLI tool `src/add_radical.py` can be used for creating the file `src/radicals.txt` and 
-appending radicals to it.
+The CLI tool `src/add_radical.py` can be used appending radicals to the file `src/radicals.txt` .
 
 The CLI tool `src/register_character.py` can be used for creating the file `src/character_registry.pkl`
 and adding characters to the dictionary.

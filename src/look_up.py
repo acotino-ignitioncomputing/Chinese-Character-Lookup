@@ -1,3 +1,6 @@
+# This file implements a simple CLI tool for looking up Chinese characters in the Python dictionary
+# stored in `character_registry.pkl` via the provided radicals.
+
 import pickle
 
 from constants import CHARACTER_REGISTRY, RADICAL_FILE

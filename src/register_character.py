@@ -1,3 +1,6 @@
+# This file implements a simple CLI tool for adding Chinese characters to the Python dictionary stored
+# in `character_registry.pkl`.
+
 import pickle
 
 from constants import CHARACTER_REGISTRY, RADICAL_FILE
