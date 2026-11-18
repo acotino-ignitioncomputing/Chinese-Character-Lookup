@@ -1,7 +1,7 @@
 from pathlib import Path
 
-CHARACTER_REGISTRY = Path('character_registry.pkl')
-RADICAL_FILE = Path('radicals.txt')
+CHARACTER_REGISTRY = Path('src/character_registry.pkl')
+RADICAL_FILE = Path('src/radicals.txt')
 
 ILLEGAL_VALUES = (
     "abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()<>/?;:'[]{}`~-_=+"
